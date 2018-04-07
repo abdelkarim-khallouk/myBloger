@@ -17,6 +17,7 @@ class CreateComments extends Migration
             $table->text('comment_body');
             $table->integer('article_id')->unsigned();
             $table->foreign('article_id')->references('id')->on('articles');
+            $table->timestamps();
         });
     }
 

@@ -18,8 +18,13 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+//Route::get('/articles', 'HomeController@showArticles');
+//Route::get('/article/{id}', 'HomeController@showArticle');
 
+Route::get('/add', 'ArticleController@add');
+Route::post('/add', 'ArticleController@add');
 
-Route::get('/articles', 'HomeController@showArticles');
+Route::get('/articles', 'ArticleController@index');
 
-Route::get('/article/{id}', 'HomeController@showArticle');
+Route::get('/article/{id}', 'ArticleController@show');
+Route::post('/article/{id}', 'ArticleController@show');

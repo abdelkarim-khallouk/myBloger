@@ -8,7 +8,7 @@
                 <div class="panel-heading">Articles</div>
 
                 <div class="panel-body">
-                    <button class="btn btn-info" href="#" >Add an article</button>
+                    <a class="btn btn-info" href="{{ url('/add') }}" >Add an article</a>
                     
                     <table class="table">
                       <thead>
@@ -19,13 +19,20 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>title</td>
-                          <td>author</td>
-                          <td><span class="glyphicon glyphicon-edit"> Edit</td>
-                          <td><span class="glyphicon glyphicon-trash"> Delete</td>
-                        </tr>
+                        
+
+                        @foreach($articles as $article)
+                          <tr>
+                            <th scope="row">1</th>
+                            <td><a href="{{ "article/".$article->id }}">{{ $article->title }}</a></td>
+                            <td>{{$article->user_id}}</td>
+                            <td><span class="glyphicon glyphicon-edit"> Edit</td>
+                            <td><span class="glyphicon glyphicon-trash"> Delete</td>
+                          </tr>
+                        @endforeach
+
+
+
                       </tbody>
                     </table>
 
