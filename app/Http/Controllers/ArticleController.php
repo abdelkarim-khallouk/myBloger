@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use App\Article;
 use App\Comment;
+use App\User;
 
 class ArticleController extends Controller
 {
@@ -25,7 +26,13 @@ class ArticleController extends Controller
     public function index()
     {
         $articles= Article::all();
-        $ar = Array('articles' => $articles);
+        $authors= User::all();
+
+        $ar = Array(
+            'articles' => $articles,
+            'authors' => $authors
+            );
+
         return view('article.view', $ar);
 
         //return view('article.view');
@@ -91,9 +98,25 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
-        //
+        $article = Article::find($id);
+
+        if ($request->isMethod('post')){
+
+            $article->title = $request->input('title');
+            $article->article_body = $request->input('body');
+            $article->user_id = Auth::user()->id;
+            $article->save();
+
+            return redirect('articles');
+        }
+        else {
+
+            $ar = Array('article' => $article);
+            return view('article.edit', $ar);
+        }
+        
     }
 
     /**
@@ -116,6 +139,8 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Article::find($id);
+        $article->delete();
+        return redirect('articles');
     }
 }

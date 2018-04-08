@@ -22,13 +22,20 @@
                         
 
                         @foreach($articles as $article)
-                          <tr>
-                            <th scope="row">1</th>
-                            <td><a href="{{ "article/".$article->id }}">{{ $article->title }}</a></td>
-                            <td>{{$article->user_id}}</td>
-                            <td><span class="glyphicon glyphicon-edit"> Edit</td>
-                            <td><span class="glyphicon glyphicon-trash"> Delete</td>
-                          </tr>
+                          
+                            <tr>
+                              <th scope="row">{{ $article->id }}</th>
+                              <td><a href="{{ "article/".$article->id }}">{{ $article->title }}</a></td>
+                              <td>
+                                @foreach($authors as $author)
+                                  @if($author->id == $article->user_id) 
+                                    {{ $author->name }} 
+                                  @endif
+                                @endforeach
+                              </td>
+                              <td><span class="glyphicon glyphicon-edit text-primary"> <a href="{{ "edit/".$article->id }}" class="">Edit</a></td>
+                              <td><span class="glyphicon glyphicon-trash text-danger"> <a href="{{ "delete/".$article->id }}" class="">Delete</a></td>
+                            </tr>
                         @endforeach
 
 

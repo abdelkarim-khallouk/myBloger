@@ -15,7 +15,8 @@
                     <div class="panel-heading">
                       <h3>Comments<h3>
                       @foreach ($article->comments as $comment)
-                        <p class="lead"> {{ $comment->comment_body }}</p>
+                        <p class="lead pull-right">{{ $comment->created_at }}</p>
+                        <p class="lead">{{ $comment->comment_body }}</p>
                       @endforeach
                       <form action="/article/{{ $article->id }}" method="POST">
                         {{csrf_field()}}

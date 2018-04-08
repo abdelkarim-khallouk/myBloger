@@ -24,7 +24,12 @@ Route::get('/home', 'HomeController@index');
 Route::get('/add', 'ArticleController@add');
 Route::post('/add', 'ArticleController@add');
 
+Route::get('/edit/{id}', 'ArticleController@edit');
+Route::post('/edit/{id}', 'ArticleController@edit');
+
 Route::get('/articles', 'ArticleController@index');
 
 Route::get('/article/{id}', 'ArticleController@show');
 Route::post('/article/{id}', 'ArticleController@show');
+
+Route::get('/delete/{id}', 'ArticleController@destroy');
