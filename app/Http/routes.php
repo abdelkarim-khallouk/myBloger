@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
 //Route::get('/articles', 'HomeController@showArticles');
 //Route::get('/article/{id}', 'HomeController@showArticle');
 

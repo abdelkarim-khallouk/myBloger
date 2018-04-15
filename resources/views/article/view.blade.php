@@ -5,11 +5,12 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Articles</div>
+                <div class="panel-heading">
+                  <a class="btn btn-sm btn-circle btn-success " href="{{ url('/add') }}" ><span class="glyphicon glyphicon-plus">  </a>
+                  <span class="center" > Articles</span>
+                </div>
 
-                <div class="panel-body">
-                    <a class="btn btn-info" href="{{ url('/add') }}" >Add an article</a>
-                    
+                <div class="panel-body">                    
                     <table class="table">
                       <thead>
                         <tr>
@@ -33,8 +34,8 @@
                                   @endif
                                 @endforeach
                               </td>
-                              <td><span class="glyphicon glyphicon-edit text-primary"> <a href="{{ "edit/".$article->id }}" class="">Edit</a></td>
-                              <td><span class="glyphicon glyphicon-trash text-danger"> <a href="{{ "delete/".$article->id }}" class="">Delete</a></td>
+                              <td><a href="{{ "edit/".$article->id }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-edit"> Edit</a></td>
+                              <td><a href="{{ "delete/".$article->id }}" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"> Delete</a></td>
                             </tr>
                         @endforeach
 
